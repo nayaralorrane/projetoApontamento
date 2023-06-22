@@ -1,0 +1,2 @@
+INSERT INTO role (skill_name, nivel) VALUES ('colaborator', 1);
+INSERT INTO role (skill_name, nivel) VALUES ('admin', 2);
