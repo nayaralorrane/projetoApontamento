@@ -1,7 +1,7 @@
 import * as yup from 'yup'
-//validação do fomrulário de apontamento
+
 function schemaApontamento() {
-    return yup.object().shape({ //yup é um validador de formulário
+    return yup.object().shape({
         date: yup.string().required('Este campo é obrigatorio'),
         description: yup.string().required('Este campo é obrigatorio'),
         projetoId: yup.string().required('Este campo é obrigatorio'),

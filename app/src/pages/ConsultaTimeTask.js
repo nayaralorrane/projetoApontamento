@@ -23,7 +23,7 @@ export default function ConsultaTimeTask({ navigation }) {
     const getProjetos = () => {
         serviceProject.getProject()
             .then(response => {
-                let array = response.data.map(projeto => {
+                let array = response.data?.map(projeto => {
                     return {
                         id: projeto.id,
                         placeholder: projeto.name
@@ -64,7 +64,7 @@ export default function ConsultaTimeTask({ navigation }) {
         if (projetoId) params['projeto_id'] = projetoId
         await servicePoint.getPoint(params)
             .then(response => {
-                let data = response.data.map(elem => {
+                let data = response.data?.map(elem => {
                     let times = convertTime(elem.date, elem.start_time, elem.end_time)
                     let taskTime = getDiferenceTime(times[0], times[1])
 
@@ -173,12 +173,13 @@ export default function ConsultaTimeTask({ navigation }) {
 
 const Style = StyleSheet.create({
     container: {
+        flex: 1,
         alignItems: 'center',
         backgroundColor: '#fff',
-        minHeight: Dimensions.get('window').height
+        minHeight: Dimensions.get('screen').height - 25
     },
     screenViewStyle: {
-        height: Dimensions.get('window').height,
+        flex: 1,
         padding: 0
     },
     listagem: {

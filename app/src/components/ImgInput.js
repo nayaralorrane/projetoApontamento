@@ -26,8 +26,12 @@ export default function ImgInput(props) {
 
     };
 
+    const openCamera = () => {
+        props.navigation.push("CameraImage");
+    }
+
     return (
-        <TouchableOpacity style={Style.contentImgInput} onPress={pickImage}>
+        <TouchableOpacity style={Style.contentImgInput} onPress={openCamera}>
             {props.value
                 ? <Image style={Style.img} source={{ uri: props.value }}/>
                 : <Text style={Style.textStyle}>ALTERAR</Text>

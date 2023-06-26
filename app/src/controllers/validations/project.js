@@ -1,8 +1,8 @@
 import * as yup from 'yup'
-//Validação do formulário do projeto
+
 function schemaProject() {
     return yup.object().shape({
-        name: yup.string().required('O campo e-mail é obrigatorio') //substitur por projeto
+        name: yup.string().required('O campo e-mail é obrigatorio')
     })
 }
 

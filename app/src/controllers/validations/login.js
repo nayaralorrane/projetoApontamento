@@ -1,5 +1,5 @@
 import * as yup from 'yup'
-//validação do formulário de login
+
 function schemaLogin() {
     return yup.object().shape({
         email: yup.string().email().required('O campo e-mail é obrigatorio'),

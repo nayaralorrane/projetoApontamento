@@ -55,8 +55,8 @@ export default function ProjetoListagem({ navigation }) {
     },[])
 
     return(
-        <SafeAreaView>
-            <ScrollView style={Style.scroll}>
+        <SafeAreaView style={Style.safeArea}>
+            <ScrollView>
                 <View style={Style.container}>
                     <ButtonMenu navigation={navigation}/>
                     <Title1 text={'Time Task'} />
@@ -84,14 +84,10 @@ export default function ProjetoListagem({ navigation }) {
 }
 
 const Style = StyleSheet.create({
-    scroll: {
-        height: Dimensions.get('screen').height,
-        padding: 0
-    },
     container: {
         alignItems: 'center',
         backgroundColor: '#fff',
-        minHeight: Dimensions.get('window').height
+        minHeight: Dimensions.get('screen').height - 25
     },
     listagem: {
         flex: 1
@@ -100,5 +96,9 @@ const Style = StyleSheet.create({
         flex: 1,
         justifyContent: 'space-between',
         alignItems: 'center'
+    },
+    safeArea: {
+        flex: 1,
+        padding: 0
     }
  })

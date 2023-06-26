@@ -1,17 +1,18 @@
 import axios from "axios"
-//rota responsável por listar os usuários e fazer edição deles
+import { API_URL } from "../../../env"
+
 export class userService {
     constructor() {}
 
-    getUser() {
-        let url = 'https://apontamento-api.herokuapp.com/user/get'
+    getUser() {        
+        let url = `${API_URL}/user/get`;
         return axios.get(url, { 
             Accept: 'application/json',
         }).then(response => response.data)
     }
 
     editUser(data) {
-        let url = 'https://apontamento-api.herokuapp.com/user/edit'
+        let url = `${API_URL}/user/edit`;
         return axios.put(url, data).then(response => response.data)
     }
 }

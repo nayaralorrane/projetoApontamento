@@ -27,7 +27,7 @@ export default function DatetimeInput(props) {
                     ? (<Text>
                         { props.type === "time"
                             ? new Date(props.value).toLocaleTimeString()
-                            : new Date(props.value).toLocaleDateString('en-GB')
+                            : new Date(props.value).toLocaleDateString()
                         }</Text>)
                     : (<Text style={Style.placeholder}>{props.placeholder}</Text>)
                 }

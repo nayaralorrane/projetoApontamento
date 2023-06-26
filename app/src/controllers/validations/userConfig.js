@@ -1,5 +1,5 @@
 import * as yup from 'yup'
-//validação de edição do usuário
+
 function schemaUserConfig() {
     return yup.object().shape({
         name: yup.string().required('O campo nome é obrigatorio'),

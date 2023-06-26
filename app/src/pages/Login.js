@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import * as WebBrowser from 'expo-web-browser';
-import * as Google from 'expo-auth-session/providers/google';
+// import * as WebBrowser from 'expo-web-browser';
+// import * as Google from 'expo-auth-session/providers/google';
 
 import { StyleSheet, View, ScrollView, Dimensions, ToastAndroid } from "react-native";
 import { signService } from '../controllers/services/signService';
@@ -19,12 +19,12 @@ import LocalStorage from '../controllers/LocalStorage';
 const serviceSign = new signService();
 const localStorage = new LocalStorage();
 
-WebBrowser.maybeCompleteAuthSession();
+// WebBrowser.maybeCompleteAuthSession();
 
 export default function Login({ navigation }) {
-    const [request, response, promptAsync] = Google.useAuthRequest({
-        expoClientId: '718770038310-419c4b0qpfdk3tkcbd1useeq3sm9qfdv.apps.googleusercontent.com'
-    });
+    // const [request, response, promptAsync] = Google.useAuthRequest({
+    //     expoClientId: '718770038310-419c4b0qpfdk3tkcbd1useeq3sm9qfdv.apps.googleusercontent.com'
+    // });
     
     const ssoSign = (accessToken) => {
         serviceSign.ssoSign({
@@ -47,12 +47,12 @@ export default function Login({ navigation }) {
         .catch(() => ToastAndroid.show('Error on sing-in !', ToastAndroid.LONG, ToastAndroid.BOTTOM))
     }
     
-    useEffect(() => {
-        if (response?.type === 'success') {
-            const { authentication } = response;
-            ssoSign(authentication.accessToken)
-        }
-    }, [response]);
+    // useEffect(() => {
+    //     if (response?.type === 'success') {
+    //         const { authentication } = response;
+    //         ssoSign(authentication.accessToken)
+    //     }
+    // }, [response]);
 
     const signIn = (dataSignIn) => {
         serviceSign.singIn(dataSignIn)
@@ -106,9 +106,9 @@ export default function Login({ navigation }) {
                                 error={(errors.password && touched.password) ? errors.password : false}
                                 password={true}
                             />
-                            <GoogleButton
+                            {/* <GoogleButton
                                 actionOnPress={ () => promptAsync() }
-                            />
+                            /> */}
                             <Button
                                 setType={'primary'}
                                 label={'ACESSE SUA CONTA'}
@@ -132,12 +132,10 @@ const Style = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'center',
         backgroundColor: '#fff',
-        minHeight: Dimensions.get('window').height
+        minHeight: Dimensions.get('screen').height - 25
     },
     screenViewStyle: {
         flex: 1,
-        backgroundColor: 'red',
-        height: Dimensions.get('window').height,
         padding: 0
     }
  })

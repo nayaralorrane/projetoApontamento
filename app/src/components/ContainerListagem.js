@@ -1,13 +1,12 @@
 import { StyleSheet, ScrollView, View, Text, Dimensions, TouchableOpacity } from "react-native";
 import { Feather, Ionicons } from '@expo/vector-icons';
-import { projectService } from "../controllers/services/projectService";
 
 export default function ContainerListagem(props) {
     return (
         <View style={style.container}>
             <ScrollView>
                 {
-                    props.arrayItems.map(item => (
+                    props.arrayItems?.map(item => (
                         <TouchableOpacity
                             style={style.item}
                             key={`item-${item.name}-${item.id}`}
@@ -50,6 +49,7 @@ const style = StyleSheet.create({
         flex: 1,
         borderColor: '#898686',
         borderWidth: 2,
+        borderRadius: 5,
         width: Dimensions.get('window').width - 60
     },
     item: {

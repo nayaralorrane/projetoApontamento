@@ -31,7 +31,7 @@ export default function ApontamentoHoras({ navigation, route }) {
     const getProjetos = () => {
         serviceProject.getProject()
         .then(response => {
-            let array = response.data.map(projeto => {
+            let array = response.data?.map(projeto => {
                 return {
                     id: String(projeto.id),
                     placeholder: projeto.name
@@ -148,13 +148,10 @@ export default function ApontamentoHoras({ navigation, route }) {
 }
 
 const Style = StyleSheet.create({
-    scroll: {
-        height: Dimensions.get('screen').height
-    },
     container: {
         alignItems: 'center',
         backgroundColor: '#fff',
-        minHeight: Dimensions.get('window').height
+        minHeight: Dimensions.get('screen').height - 25
     },
     contentForm: {
         flex: 1,

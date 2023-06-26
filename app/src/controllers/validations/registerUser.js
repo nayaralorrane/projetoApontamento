@@ -1,5 +1,5 @@
 import * as yup from 'yup'
-//validação formulário de cadastro de usuário
+
 function schemaRegisterUser() {
     return yup.object().shape({
         name: yup.string().required('O campo nome é obrigatorio'),

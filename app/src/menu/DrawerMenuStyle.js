@@ -36,8 +36,8 @@ export default function DrawerContent(props) {
 	}
 
 	const logOut = () => {
-		localStorage.removeItem('userData'); //remover os dados do usuário ao sair do app
-//redireciona para página de login
+		localStorage.removeItem('userData');
+
 		props.navigation.reset({
             index: 0,
             routes: [{ name: 'Login' }]

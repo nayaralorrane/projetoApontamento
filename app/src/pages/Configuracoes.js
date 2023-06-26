@@ -13,7 +13,7 @@ import LocalStorage from '../controllers/LocalStorage';
 
 const serviceUser = new userService();
 const localStorage = new LocalStorage();
-export default function Configuracoes({ navigation }) {
+export default function Configuracoes({ navigation, route }) {
     const [img, setImg] = useState(null);
     const [userData, setUserData] = useState({
         name: null,
@@ -25,9 +25,15 @@ export default function Configuracoes({ navigation }) {
         data.attachment = img;
         serviceUser.editUser(data)
         .then(() => {
-            var dataUser = JSON.parse(localStorage.getItem('userData'))
-            dataUser.email = data.email
-            localStorage.setItem('userData', JSON.stringify(dataUser))
+            localStorage.getItem('userData'), dataUser => {
+                dataUser.email = data.email
+                localStorage.setItem('userData', JSON.stringify(dataUser))
+            }
+            ToastAndroid.show(
+                'Salvo com sucesso',
+                ToastAndroid.LONG,
+                ToastAndroid.BOTTOM
+            )
         })
         .catch(() => 
             ToastAndroid.show(
@@ -38,8 +44,8 @@ export default function Configuracoes({ navigation }) {
         )
     }
 
-    const getUser = () => {
-        serviceUser.getUser()
+    const getUser = async () => {
+        await serviceUser.getUser()
         .then(response => {
             setUserData({
                 name: response.name,
@@ -49,19 +55,26 @@ export default function Configuracoes({ navigation }) {
             setImg(response.avatar)
         })
         .catch(error => {
-            console.log(error);
+            getUser();
         })
     }
 
     useEffect(() => {
-        getUser()
+        getUser();
     }, [])
+
+     useEffect(() => {
+        if (route?.params?.imgUri) {
+            setImg(route?.params?.imgUri)
+        }
+    }, [route])
 
     return (
         <ScrollView>
             <View style={Style.container}>
                 <ButtonMenu navigation={navigation}/>
                 <ImgInput
+                    navigation={navigation}
                     value={img}
                     vModel={setImg}
                 />
@@ -110,7 +123,7 @@ const Style = StyleSheet.create({
     container: {
         alignItems: 'center',
         backgroundColor: '#fff',
-        minHeight: Dimensions.get('window').height
+        minHeight: Dimensions.get('screen').height - 25
     },
     contentForm: {
         flex: 1,

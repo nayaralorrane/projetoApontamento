@@ -101,12 +101,10 @@ const Style = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'center',
         backgroundColor: '#fff',
-        minHeight: Dimensions.get('window').height
+        minHeight: Dimensions.get('screen').height - 25
     },
     screenViewStyle: {
         flex: 1,
-        backgroundColor: 'red',
-        height: Dimensions.get('window').height,
         padding: 0
     }
  })

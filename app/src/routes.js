@@ -7,6 +7,7 @@ import LoadPage from './pages/LoadPage';
 import Login from './pages/Login';
 import RegisterUser from './pages/RegisterUser';
 import MenuRoute from './menu/MenuRoute';
+import CameraImage from './components/CameraImage';
 
 export function Routes() {
     return(
@@ -16,6 +17,7 @@ export function Routes() {
                 <AppRoute.Screen name='Login' component={Login}></AppRoute.Screen>
                 <AppRoute.Screen name='RegisterUser' component={RegisterUser}></AppRoute.Screen>
                 <AppRoute.Screen name='MenuRoute' component={MenuRoute}></AppRoute.Screen>
+                <AppRoute.Screen name='CameraImage' component={CameraImage}></AppRoute.Screen>
             </AppRoute.Navigator>
         </NavigationContainer>
     )

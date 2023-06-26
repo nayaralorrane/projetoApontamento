@@ -1,5 +1,4 @@
 import React from 'react';
-import Home from './../pages/Home';
 import ProjetoListagem from '../pages/ProjetoListagem';
 import CadastroProjeto from './../pages/CadastroProjeto';
 import ConsultaTimeTask from './../pages/ConsultaTimeTask';

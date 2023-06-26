@@ -93,7 +93,7 @@ const Style = StyleSheet.create({
     container: {
         alignItems: 'center',
         backgroundColor: '#fff',
-        minHeight: Dimensions.get('window').height
+        minHeight: Dimensions.get('screen').height - 25
     },
     form: {
         flex: 1,

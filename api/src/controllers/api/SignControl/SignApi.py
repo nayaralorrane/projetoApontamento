@@ -82,6 +82,7 @@ def signUp():
 
     except Exception as error:
         erro = {'error': str(error)}
+        print(erro)
         return jsonify(erro), 500
 
 
